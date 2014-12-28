@@ -13,7 +13,7 @@ BuildRequires:	asciidoc
 BuildRequires:	attr-devel
 BuildRequires:	avahi-devel
 BuildRequires:	avahi-gobject-devel
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 2.0
 BuildRequires:	gtk-doc >= 1.14
 BuildRequires:	intltool >= 0.40.0
