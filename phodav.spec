@@ -2,12 +2,12 @@ Summary:	Phodav - WebDAV server implementation using libsoup
 Summary(en.UTF-8):	Phởdav - WebDAV server implementation using libsoup
 Summary(pl.UTF-8):	Phởdav - implementacja serwera WebDAV wykorzystująca libsoup
 Name:		phodav
-Version:	0.4
-Release:	2
+Version:	2.0
+Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/phodav/0.4/%{name}-%{version}.tar.xz
-# Source0-md5:	02036f62c7094a11123924c6d5605c9f
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/phodav/2.0/%{name}-%{version}.tar.xz
+# Source0-md5:	f91d8db3d86fb9e74e03258781be4d2b
 URL:		https://wiki.gnome.org/phodav
 BuildRequires:	asciidoc
 BuildRequires:	attr-devel
@@ -17,7 +17,7 @@ BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 2.0
 BuildRequires:	gtk-doc >= 1.14
 BuildRequires:	intltool >= 0.40.0
-BuildRequires:	libsoup-devel >= 2.4
+BuildRequires:	libsoup-devel >= 2.48.0
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	pkgconfig
 BuildRequires:	tar >= 1:1.22
@@ -41,7 +41,7 @@ phởdav to implementacja serwera WebDAV wykorzystująca libsoup
 Summary:	PhoDAV - WebDAV library based on libsoup
 Summary(pl.UTF-8):	PhoDAV - biblioteka WebDAV oparta na libsoup
 Group:		Libraries
-Requires:	libsoup >= 2.4
+Requires:	libsoup >= 2.48.0
 
 %description libs
 PhoDAV - WebDAV library based on libsoup.
@@ -54,7 +54,7 @@ Summary:	Header files for PhoDAV library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki PhoDAV
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	libsoup-devel >= 2.4
+Requires:	libsoup-devel >= 2.48.0
 
 %description devel
 Header files for PhoDAV library.
@@ -118,25 +118,24 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/chezdav
 %attr(755,root,root) %{_sbindir}/spice-webdavd
 %{systemdunitdir}/spice-webdavd.service
-%{systemdunitdir}/spice-webdavd.target
 /lib/udev/rules.d/70-spice-webdavd.rules
 %{_mandir}/man1/chezdav.1*
 
 %files libs
 %defattr(644,root,root,755)
 %doc NEWS README TODO
-%attr(755,root,root) %{_libdir}/libphodav-1.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libphodav-1.0.so.0
+%attr(755,root,root) %{_libdir}/libphodav-2.0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libphodav-2.0.so.0
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libphodav-1.0.so
-%{_includedir}/libphodav-1.0
-%{_pkgconfigdir}/libphodav-1.0.pc
+%attr(755,root,root) %{_libdir}/libphodav-2.0.so
+%{_includedir}/libphodav-2.0
+%{_pkgconfigdir}/libphodav-2.0.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libphodav-1.0.a
+%{_libdir}/libphodav-2.0.a
 
 %files apidocs
 %defattr(644,root,root,755)
