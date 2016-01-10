@@ -3,7 +3,7 @@ Summary(en.UTF-8):	Phởdav - WebDAV server implementation using libsoup
 Summary(pl.UTF-8):	Phởdav - implementacja serwera WebDAV wykorzystująca libsoup
 Name:		phodav
 Version:	2.0
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/phodav/2.0/%{name}-%{version}.tar.xz
@@ -34,8 +34,8 @@ phodav is a WebDAV server implementation using libsoup (RFC 4918).
 phởdav is a WebDAV server implementation using libsoup (RFC 4918).
 
 %description -l pl.UTF-8
-phởdav to implementacja serwera WebDAV wykorzystująca libsoup
-(RFC 4918).
+phởdav to implementacja serwera WebDAV wykorzystująca libsoup (RFC
+4918).
 
 %package libs
 Summary:	PhoDAV - WebDAV library based on libsoup
@@ -78,6 +78,9 @@ Statyczna biblioteka PhoDAV.
 Summary:	API documentation for PhoDAV library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki PhoDAV
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 API documentation for PhoDAV library.
