@@ -1,13 +1,14 @@
+# TODO: will require glib >= 2.52 when build with 2.52+
 Summary:	Phodav - WebDAV server implementation using libsoup
 Summary(en.UTF-8):	Phởdav - WebDAV server implementation using libsoup
 Summary(pl.UTF-8):	Phởdav - implementacja serwera WebDAV wykorzystująca libsoup
 Name:		phodav
-Version:	2.0
-Release:	2
+Version:	2.2
+Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/phodav/2.0/%{name}-%{version}.tar.xz
-# Source0-md5:	f91d8db3d86fb9e74e03258781be4d2b
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/phodav/2.2/%{name}-%{version}.tar.xz
+# Source0-md5:	18dc8890ef3606f2a053054658dbf016
 URL:		https://wiki.gnome.org/phodav
 BuildRequires:	asciidoc
 BuildRequires:	attr-devel
@@ -108,7 +109,7 @@ rm -rf $RPM_BUILD_ROOT
 # obsoleted by pkg-config
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/lib*.la
 
-%find_lang %{name}
+%find_lang %{name}-2.0
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -116,7 +117,7 @@ rm -rf $RPM_BUILD_ROOT
 %post	libs -p /sbin/ldconfig
 %postun	libs -p /sbin/ldconfig
 
-%files -f %{name}.lang
+%files -f %{name}-2.0.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/chezdav
 %attr(755,root,root) %{_sbindir}/spice-webdavd
@@ -142,4 +143,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files apidocs
 %defattr(644,root,root,755)
-%{_gtkdocdir}/phodav
+%{_gtkdocdir}/phodav-2.0
