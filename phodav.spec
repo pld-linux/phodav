@@ -1,27 +1,31 @@
-# TODO: will require glib >= 2.52 when build with 2.52+
 Summary:	Phodav - WebDAV server implementation using libsoup
 Summary(en.UTF-8):	Phởdav - WebDAV server implementation using libsoup
 Summary(pl.UTF-8):	Phởdav - implementacja serwera WebDAV wykorzystująca libsoup
 Name:		phodav
-Version:	2.2
+Version:	2.4
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/phodav/2.2/%{name}-%{version}.tar.xz
-# Source0-md5:	18dc8890ef3606f2a053054658dbf016
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/phodav/2.4/%{name}-%{version}.tar.xz
+# Source0-md5:	7034f99ad6a510ddaa82bda12641b077
 URL:		https://wiki.gnome.org/phodav
 BuildRequires:	asciidoc
 BuildRequires:	attr-devel
 BuildRequires:	avahi-devel
 BuildRequires:	avahi-gobject-devel
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 2.0
+BuildRequires:	glib2-devel >= 1:2.51.2
 BuildRequires:	gtk-doc >= 1.14
-BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libsoup-devel >= 2.48.0
 BuildRequires:	libxml2-devel >= 2.0
+BuildRequires:	meson >= 0.50
+BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	systemd-units
 BuildRequires:	tar >= 1:1.22
+# for udevdir
+BuildRequires:	udev-devel
 BuildRequires:	xmlto
 BuildRequires:	xz
 Requires:	%{name}-libs = %{version}-%{release}
@@ -42,6 +46,7 @@ phởdav to implementacja serwera WebDAV wykorzystująca libsoup (RFC
 Summary:	PhoDAV - WebDAV library based on libsoup
 Summary(pl.UTF-8):	PhoDAV - biblioteka WebDAV oparta na libsoup
 Group:		Libraries
+Requires:	glib2 >= 1:2.51.2
 Requires:	libsoup >= 2.48.0
 
 %description libs
@@ -79,7 +84,7 @@ Statyczna biblioteka PhoDAV.
 Summary:	API documentation for PhoDAV library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki PhoDAV
 Group:		Documentation
-%if "%{_rpmversion}" >= "5"
+%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
 %endif
 
@@ -93,21 +98,14 @@ Dokumentacja API biblioteki PhoDAV.
 %setup -q
 
 %build
-%configure \
-	--disable-silent-rules \
-	--with-html-dir=%{_gtkdocdir} \
-	--with-systemdsystemunitdir=%{systemdunitdir} \
-	--with-udevdir=/lib/udev
-%{__make}
+%meson build
+
+%ninja_build -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
-
-# obsoleted by pkg-config
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/lib*.la
+%ninja_install -C build
 
 %find_lang %{name}-2.0
 
@@ -127,7 +125,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files libs
 %defattr(644,root,root,755)
-%doc NEWS README TODO
+%doc NEWS README.md TODO
 %attr(755,root,root) %{_libdir}/libphodav-2.0.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libphodav-2.0.so.0
 
