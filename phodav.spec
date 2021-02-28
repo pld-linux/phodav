@@ -84,9 +84,7 @@ Statyczna biblioteka PhoDAV.
 Summary:	API documentation for PhoDAV library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki PhoDAV
 Group:		Documentation
-%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 API documentation for PhoDAV library.
