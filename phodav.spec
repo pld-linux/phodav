@@ -31,6 +31,7 @@ BuildRequires:	xmlto
 BuildRequires:	xz
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	systemd-units
+Conflicts:	phodav3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
