@@ -2,12 +2,12 @@ Summary:	Phodav - WebDAV server implementation using libsoup
 Summary(en.UTF-8):	Phởdav - WebDAV server implementation using libsoup
 Summary(pl.UTF-8):	Phởdav - implementacja serwera WebDAV wykorzystująca libsoup
 Name:		phodav
-Version:	2.4
+Version:	2.5
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/phodav/2.4/%{name}-%{version}.tar.xz
-# Source0-md5:	7034f99ad6a510ddaa82bda12641b077
+Source0:	https://download.gnome.org/sources/phodav/2.5/%{name}-%{version}.tar.xz
+# Source0-md5:	2dc345a3e6085561b6700decb73383cc
 URL:		https://wiki.gnome.org/phodav
 BuildRequires:	asciidoc
 BuildRequires:	attr-devel
@@ -21,6 +21,7 @@ BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	meson >= 0.50
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	systemd-units
 BuildRequires:	tar >= 1:1.22
@@ -60,7 +61,9 @@ Summary:	Header files for PhoDAV library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki PhoDAV
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
+Requires:	glib2-devel >= 1:2.51.2
 Requires:	libsoup-devel >= 2.48.0
+Requires:	libxml2-devel >= 2.0
 
 %description devel
 Header files for PhoDAV library.
